@@ -35,11 +35,10 @@ app.use(express.static('public'));
 
 //Gathers parameters from search and serves results
 app.get('/api/imagesearch/:searchTerm*', (req, res) => {
-  const {searchTerm} = req.params;
-   var searchTerm = searchTerm.replace(/' '/g, '%20');
-  
+  let {searchTerm} = req.params;
+  //replace the spaces with %20 to send query to google search
+   searchTerm = searchTerm.replace(/ /g, '%20');
   const {offset} = req.query;
-  //Remeber to take any spaces out with regex
   console.log('Search Term', searchTerm);
   //console.log('offset', offset);
   let data = new history({
