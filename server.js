@@ -15,23 +15,18 @@ const uri = 'mongodb://'+process.env.USER+':'+process.env.PASS+'@'+process.env.H
 mongoose.connect(uri).then((err, res) => {
   if(err){
     console.log(err);
-  } else {
-
   }
 });
 
 //display home page
 app.use(express.static('public'));
 
-//Gathers parameters from search and serves results
+//Gathers parameters from search, saves input and  serves results
 app.get('/api/imagesearch/:searchTerm*', (req, res) => {
   let {searchTerm} = req.params;
   //replace the spaces with %20 to send query to google search
-   const googleTerm = searchTerm.replace(/ /g, '%20');
+  const googleTerm = searchTerm.replace(/ /g, '%20');
   let {offset} = req.query;
-  
-  //console.log('Search Term', searchTerm);
-  //console.log('offset', offset);
   let data = new history({
     term: searchTerm,
     when: new Date()
@@ -59,7 +54,7 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
       })
       .catch(error => {
       res.send(error);
-      })
+      });
     }
   });// end of save
 });
