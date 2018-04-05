@@ -35,15 +35,24 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
   let data = new history({
     term: searchTerm,
   });
-  console.log({});
+  
   data.save(err => {
     if(err){
       console.log('Error', err);
     } else {
-      console.log('success');
     }
   });
-  
+  history.findOne({term: searchTerm}, (err, data) => {
+    if(err){
+      console.log('database error');
+    }else{
+      var data2 = {
+      'term': searchTerm,
+      'when': data.createdAt
+      }
+      console.log(data2);
+    }
+  });
   
 });
 
