@@ -47,10 +47,10 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
       console.log('database error');
     }else{
       var data2 = {
-      'term': searchTerm,
-      'when': data.createdAt
+      "term": searchTerm,
+      "when": data.createdAt
       }
-      console.log(data2);
+      console.log(JSON.stringify(data2));
     }
   });
   
