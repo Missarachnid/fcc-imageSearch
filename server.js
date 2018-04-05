@@ -17,8 +17,8 @@ const uri = 'mongodb://'+process.env.USER+':'+process.env.PASS+'@'+process.env.H
 app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
-app.get("/", function (request, response) {
-  response.sendFile(__dirname + '/views/index.html');
+app.get('api/imagesearch/:searchTerm*', (request, response) => {
+  
 });
 
 var googleSearch = new GoogleSearch({
@@ -59,3 +59,17 @@ var listener = app.listen(process.env.PORT, function () {
 &linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}
 &searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}
 &imgDominantColor={imgDominantColor?}&alt=json"*/
+
+/*main:
+url, snippet, thumbnail, context
+
+recent
+term, when
+{"term":"lolcats funny","when":"2018-04-05T13:54:11.479Z"}
+
+{"url":"https://llwproductions.files.wordpress.com/2012/05/funny-cat-pictures-with-caption-lolcats-one-dumbazh-away.jpg","snippet":"This is Motley News' 1,000th Post! Time to Celebrate with Funnies ...","thumbnail":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvgMU-uS_Czv-Gw7eHFYf2Ue6wMoNX00AImn8Ljk0ZHKzjG7_us5FCG6K5","context":"https://motleynews.net/2012/05/01/this-is-motley-news-1000th-post-time-to-celebrate-with-funnies/"}
+
+kind for each object, its in the items array
+url = image.context link
+snippet = snippet
+thumbnail = image.thumbnail link*/
