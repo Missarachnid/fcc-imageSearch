@@ -58,24 +58,20 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
       axios.get(url)
       .then(response => {
         let googleData = [];
-        for(var i = 0; i < response.items.length; i++){
-          
+        for(var i = 0; i < response.data.items.length - 1; i++){
           let entry = {
-            url: response.items[i].link,
-            snippet: response.items[i].snippet,
-            thumbnail: response.items[i].image.thumbnailLink,
-            context: response.items[i].title
+            url: response.data.items[i].link,
+            snippet: response.data.items[i].snippet,
+            thumbnail: response.data.items[i].image.thumbnailLink,
+            context: response.data.items[i].title
           }
           googleData.push(entry)
         }
         res.send(googleData);
-      
       })
       .catch(error => {
       res.send(error);
       })
-      
-      
     }
   });
 });
