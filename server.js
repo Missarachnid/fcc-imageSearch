@@ -54,25 +54,26 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
       res.send('Error saving search term to database');
     } else {
       /*Google search goes here*/
-      //const url = `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.GOOGLE_ID}&q=${googleTerm}&searchType=image&start=${offset}&alt=json`;
-      /*axios.get(url)
-      .then(response => {*/
+      const url = `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.GOOGLE_ID}&q=${googleTerm}&searchType=image&start=${offset}&alt=json`;
+      axios.get(url)
+      .then(response => {
         let googleData = [];
-        for(var i = 0; i < search.items.length; i++){
-          let entry = {
-            url: search.items[i].link,
-            snippet: search.items[i].snippet,
-            thumbnail: search.items[i].image.thumbnailLink,
-            context: search.items[i].title
-          }
+        for(var i = 0; i < response.items.length; i++){
           
+          let entry = {
+            url: response.items[i].link,
+            snippet: response.items[i].snippet,
+            thumbnail: response.items[i].image.thumbnailLink,
+            context: response.items[i].title
+          }
+          googleData.push(entry)
         }
+        res.send(googleData);
       
-      
-      /*})
+      })
       .catch(error => {
-      console.log('Error', error);
-      })*/
+      res.send(error);
+      })
       
       
     }
@@ -97,7 +98,8 @@ app.get('/api/recent' , (req, res) => {
         };
         final.push(entry);
       }
-      res.send(final);}
+      res.send(final);
+    }
   });
 });
 
