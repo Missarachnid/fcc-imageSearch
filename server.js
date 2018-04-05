@@ -13,22 +13,27 @@ app.use(bodyParser.json());
 
 //connect to MLab
 const uri = 'mongodb://'+process.env.USER+':'+process.env.PASS+'@'+process.env.HOST+':'+process.env.DB_PORT+'/'+process.env.DB;
+mongoose.connect(uri).then((err, res) => {
+  if(err){
+    console.log(err);
+  }
+});
 
 // http://expressjs.com/en/starter/static-files.html
-//app.use(express.static('public'));
+app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get('/api/imagesearch/:searchTerm*', (req, res) => {
   const {searchTerm} = req.params;
   console.log('Search Term', searchTerm);
-  const url = `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.GOOGLE_ID}&q=${searchTerm}&searchType=image&alt=json`;
+  /*const url = `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.GOOGLE_ID}&q=${searchTerm}&searchType=image&alt=json`;
   axios.get(url)
   .then(response => {
   console.log('Response', response);
   })
   .catch(error => {
     console.log('Error', error);
-  })
+  })*/
   
 });
 
