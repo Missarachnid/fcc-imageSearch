@@ -4,7 +4,6 @@ const path = require('path');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const GoogleSearch = require('google-search');
 const history = require('./models/history');
 const app = express();
 const axios = require('axios');
@@ -21,8 +20,7 @@ mongoose.connect(uri).then((err, res) => {
   }
 });
 
-
-
+//display home page
 app.use(express.static('public'));
 
 //Gathers parameters from search and serves results
@@ -39,7 +37,6 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
     when: new Date()
   });
   //Save search term into database
- 
   data.save(err => {
     if(err){
       res.send('Error saving search term to database');
@@ -67,8 +64,6 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
   });// end of save
 });
 
-
-
 //gathers collection entries and displays on page
 app.get('/api/recent' , (req, res) => {
   const final = [];
@@ -92,6 +87,6 @@ app.get('/api/recent' , (req, res) => {
 
 
 // listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
+var listener = app.listen(process.env.PORT, () => {
   console.log('Your app is listening on port ' + listener.address().port);
 });
