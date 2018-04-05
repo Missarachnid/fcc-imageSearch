@@ -26,6 +26,10 @@ app.use(express.static('public'));
 app.get('/api/imagesearch/:searchTerm*', (req, res) => {
   const {searchTerm} = req.params;
   console.log('Search Term', searchTerm);
+  let data = new history({
+    term: searchTerm,
+  });
+  data.save
   /*const url = `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.GOOGLE_ID}&q=${searchTerm}&searchType=image&alt=json`;
   axios.get(url)
   .then(response => {
