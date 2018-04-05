@@ -11,6 +11,14 @@ const axios = require('axios');
 app.use(bodyParser.json());
 app.use(cors());
 
+
+/*var data2 = {
+      "term": searchTerm,
+      "when": data.createdAt
+      };
+      JSON.strigify(data2);*/
+
+
 //connect to MLab
 const uri = 'mongodb://'+process.env.USER+':'+process.env.PASS+'@'+process.env.HOST+':'+process.env.DB_PORT+'/'+process.env.DB;
 mongoose.connect(uri).then((err, res) => {
@@ -25,35 +33,31 @@ db.createCollection("historys", {
     max: 5000
   });
 
-// http://expressjs.com/en/starter/static-files.html
+
 app.use(express.static('public'));
 
-// http://expressjs.com/en/starter/basic-routing.html
+//Gathers parameters from search and serves results
 app.get('/api/imagesearch/:searchTerm*', (req, res) => {
   const {searchTerm} = req.params;
+  //Remeber to take any spaces out with regex
   console.log('Search Term', searchTerm);
   let data = new history({
     term: searchTerm,
   });
-  
+  //Save search term into database
   data.save(err => {
     if(err){
-      console.log('Error', err);
+      res.send()
     } else {
     }
   });
-  history.findOne({term: searchTerm}, (err, data) => {
-    if(err){
-      console.log('database error');
-    }else{
-      var data2 = {
-      "term": searchTerm,
-      "when": data.createdAt
-      }
-      console.log(JSON.stringify(data2));
-    }
-  });
   
+  /*Googe search goes here*/
+  
+});
+
+app.get('/api/latest/imagesearch', (res, req) => {
+
 });
 
 
