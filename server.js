@@ -39,25 +39,28 @@ app.use(express.static('public'));
 //Gathers parameters from search and serves results
 app.get('/api/imagesearch/:searchTerm*', (req, res) => {
   const {searchTerm} = req.params;
+  const {offset} = req.query;
   //Remeber to take any spaces out with regex
   console.log('Search Term', searchTerm);
+  console.log('offset', offset);
   let data = new history({
     term: searchTerm,
   });
   //Save search term into database
   data.save(err => {
     if(err){
-      res.send()
+      res.send('Error saving search term to database');
     } else {
+      
     }
   });
   
-  /*Googe search goes here*/
+  /*Google search goes here*/
   
 });
 
 app.get('/api/latest/imagesearch', (res, req) => {
-
+  db
 });
 
 
