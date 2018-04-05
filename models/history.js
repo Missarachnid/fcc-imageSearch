@@ -2,7 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const historySchema = new Schema(
-  {"term": String},
+  { "term": String,
+    "when" : Date
+  },
   {"timestamps": true}
 );
 

@@ -24,14 +24,11 @@ const uri = 'mongodb://'+process.env.USER+':'+process.env.PASS+'@'+process.env.H
 mongoose.connect(uri).then((err, res) => {
   if(err){
     console.log(err);
+  } else {
+
   }
 });
-var db = mongoose.connection;
-db.createCollection("historys", {
-    capped: true,
-    size: 5242880,
-    max: 5000
-  });
+
 
 
 app.use(express.static('public'));
@@ -45,13 +42,14 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
   console.log('offset', offset);
   let data = new history({
     term: searchTerm,
+    when: new Date()
   });
   //Save search term into database
   data.save(err => {
     if(err){
       res.send('Error saving search term to database');
     } else {
-      
+      console.log(JSON.stringify(data));
     }
   });
   
@@ -60,7 +58,7 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
 });
 
 app.get('/api/latest/imagesearch', (res, req) => {
-  db
+  
 });
 
 
