@@ -18,6 +18,7 @@ Melissa Kepler A.K.A. Missarachnid
 *  [Free Code Camp](https://www.freecodecamp.org)
 *  [Glitch](https://glitch.com/)
 *  [MLab](https://mlab.com/)
+*  [Google Custom Search Engine](https://developers.google.com/custom-search/)
 
 
-## Project is still a work in progress
+## Project can be seen [here](https://corgi.glitch.me/api/imagesearch/dogs?offset=3)

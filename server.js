@@ -8,18 +8,8 @@ const GoogleSearch = require('google-search');
 const history = require('./models/history');
 const app = express();
 const axios = require('axios');
-const search = require('./search');
 app.use(bodyParser.json());
 app.use(cors());
-
-
-
-/*var data2 = {
-      "term": searchTerm,
-      "when": data.createdAt
-      };
-      JSON.strigify(data2);*/
-
 
 //connect to MLab
 const uri = 'mongodb://'+process.env.USER+':'+process.env.PASS+'@'+process.env.HOST+':'+process.env.DB_PORT+'/'+process.env.DB;
