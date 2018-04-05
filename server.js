@@ -20,6 +20,25 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
+var googleSearch = new GoogleSearch({
+  key: process.env.GOOGLE_API_KEY,
+  cx: process.env.GOOGLE_ID
+});
+ 
+ 
+googleSearch.build({
+  q: "",
+  safe: "medium",
+  searchType: "image"
+}, (error, response) =>  {
+  if(error){
+    console.log("Error", error);
+  } else{
+    console.log("Response", response);
+  }
+  
+});
+
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
@@ -31,23 +50,7 @@ var listener = app.listen(process.env.PORT, function () {
 // /api/imagesearch/
 // /api/latest
 
-/*var googleSearch = new GoogleSearch({
-  key: process.env.GOOGLE_API_KEY,
-  cx: process.env.GOOGLE_ID
-});
- 
- 
-googleSearch.build({
-  q: "",
-  start: 5,
-  fileType: "pdf",
-  gl: "tr", //geolocation, 
-  lr: "lang_tr",
-  num: 10, // Number of search results to return between 1 and 10, inclusive 
-  siteSearch: "http://kitaplar.ankara.edu.tr/" // Restricts results to URLs from a specified site 
-}, function(error, response) {
-  console.log(response);
-});*/
+
 
 /*"template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}
 &safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}
