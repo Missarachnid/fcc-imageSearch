@@ -58,9 +58,19 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
   
 });
 
-app.get('/api/latest/imagesearch', (res, req) => {
+app.get('/api/recent' , (req, res) => {
+  const final = [];
   history.find({}, (err, data) => {
-    res.json(data);
+    const results = data;
+    results.map( val => {
+    var entry = {
+      term: results[val].term,
+      when: results[val].when
+    };
+      
+      results.push(JSON.stringify(entry));
+    });
+    res.send(final);
   });
 });
 
