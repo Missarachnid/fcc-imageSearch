@@ -39,7 +39,8 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
   let {searchTerm} = req.params;
   //replace the spaces with %20 to send query to google search
    const googleTerm = searchTerm.replace(/ /g, '%20');
-  const {offset} = req.query;
+  let {offset} = req.query;
+  
   //console.log('Search Term', searchTerm);
   //console.log('offset', offset);
   let data = new history({
@@ -52,11 +53,11 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
       res.send('Error saving search term to database');
     } else {
       /*Google search goes here*/
-      const url = `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.GOOGLE_ID}&q=${googleTerm}&searchType=image&alt=json`;
+      const url = `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.GOOGLE_ID}&q=${googleTerm}&searchType=image&start=${offset}&alt=json`;
       /*axios.get(url)
       .then(response => {
         let googleData = response;
-        for
+        for(var i = 0; i < response.leng)
       //console.log('Response', response);
       
       })
