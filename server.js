@@ -29,7 +29,6 @@ var googleSearch = new GoogleSearch({
  
 googleSearch.build({
   q: "lolcats",
-  safe: "medium",
   searchType: "image"
 }, (error, response) =>  {
   if(error){
