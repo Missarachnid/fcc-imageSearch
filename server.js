@@ -58,25 +58,23 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
   
 });
 
+//gathers collection entries and displays on page
 app.get('/api/recent' , (req, res) => {
   const final = [];
+  //return items saved in the collection
   history.find({}, (err, data) => {
     if(err) {
       console.log('Error', err);
     }else{
-  const response = Array.from(data);
-    
-    response.map( val => {
-      console.log(response[val]);
-    var entry = {
-      term: response[val].term,
-      when: response[val].when
-    };
-    
-      final.push(JSON.stringify(entry));
-    });
-    res.json(final);
-    }
+      console.log(data);
+      for(var i = 0; i < data.length; i++){
+        var entry = {
+          term: data[i].term,
+          when: data[i].when
+        };
+        final.push(entry);
+      }
+      res.send(final);}
   });
 });
 
