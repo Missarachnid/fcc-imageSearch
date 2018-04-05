@@ -1,59 +1,37 @@
-<!-- This is a static file -->
-<!-- served from your routes in server.js -->
-
-<!-- You might want to try something fancier: -->
-<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
-<!-- pug: https://pugjs.org/ -->
-<!-- haml: http://haml.info/ -->
-<!-- hbs(handlebars): http://handlebarsjs.com/ -->
-
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Image Search</title>
-    <meta name="description" content="A cool thing made with Glitch">
-    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="/style.css">
-  </head>
-  <body>
-    <header>
-      <h1>
-        A Dream of the Future
-      </h1>
-    </header>
-
-    <main>
-      <p class="bold">Oh hi,</p>
-      
-      <p>Tell me your hopes and dreams:</p>
-      
-      <form>
-        <input name="dream" type="text" maxlength="100" placeholder="Dreams!" aria-labelledby="submit-dream">
-        <button type="submit" id="submit-dream">Submit Dream</button>
-      </form>
-      
-      <section class="dreams">
-        <ul id="dreams"></ul>
-      </section>
-    </main>
-
-    <footer>
-      Made with <a href="https://glitch.com">Glitch</a>!
-    </footer>
-    
-    
-    <!-- import the webpage's client-side javascript file -->
-    <script src="/client.js"></script>
-
-    <!-- include the Glitch button to show what the webpage is about and
-          to make it easier for folks to view source and remix -->
-    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
-    <script src="https://button.glitch.me/button.js"></script>
-
-  </body>
+<html>
+    <head>
+        <title>Image Search</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="css/text">
+        <link rel="stylesheet" href="style.css" type="text/css">
+    </head>
+    <body>
+        <h1>Free Code Camp API Base Jump</h1>
+        <h2>Image Search Abstraction Layer Project</h2>
+        <div class="quote">
+            <blockquote>
+                <h3>User Stories:</h3>
+                <ol>
+                    <li class="stories">I can get the image URLs, alt text and page urls for a set of images relating to a given search string.</li>
+                    <li class="stories"> can paginate through the responses by adding a ?offset=2 parameter to the URL</li>
+                    <li class="stories">I can get a list of the most recently submitted search strings.</li>
+                </ol>
+            </blockquote>
+        </div>
+        <div>
+            <h3>Example urls to retrieve images:</h3>
+                <div><code>https://corgi.glitch.me/api/imagesearch/corgis</code></div>
+                <div><code>https://corgi.glitch.me/api/imagesearch/siborgis</code></div>
+            <h3>Example urls to see latest requests:</h3>
+                <div><code>https://corgi.glitch.me/api/latest/imagesearch</code></div>
+            <h3>Example latest search return</h3>
+        </div>
+        <div>
+            <p>Created By: <span class="me"><strong>Melissa Kepler</strong></span></p>
+            <div class="btn-group btn-group-lg">
+                <a href="https://github.com/Missarachnid/fcc-url-shortener" target="_blank"><button type="button" class="btn links">Github Repository</button></a>
+                <a href="http://mmkepler.com" target="_blank"><button type="button" class="btn links">mmkepler.com</button></a>
+            </div>
+      </div>
+    </body>
 </html>

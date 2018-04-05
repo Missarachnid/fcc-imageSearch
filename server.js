@@ -35,11 +35,12 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
   let data = new history({
     term: searchTerm,
   });
+  console.log({});
   data.save(err => {
     if(err){
       console.log('Error', err);
     } else {
-      console.log('success', data);
+      console.log('success');
     }
   });
   
