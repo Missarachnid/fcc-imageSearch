@@ -50,6 +50,7 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
       res.send('Error saving search term to database');
     } else {
       console.log(JSON.stringify(data));
+      res.json(data);
     }
   });
   
@@ -58,7 +59,9 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
 });
 
 app.get('/api/latest/imagesearch', (res, req) => {
-  
+  history.find({}, (err, data) => {
+    res.json(data);
+  });
 });
 
 
