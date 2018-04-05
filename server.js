@@ -8,6 +8,7 @@ const GoogleSearch = require('google-search');
 const history = require('./models/history');
 const app = express();
 const axios = require('axios');
+const search = require('./search');
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -53,7 +54,7 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
       res.send('Error saving search term to database');
     } else {
       /*Google search goes here*/
-      const url = `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.GOOGLE_ID}&q=${googleTerm}&searchType=image&start=${offset}&alt=json`;
+      //const url = `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.GOOGLE_ID}&q=${googleTerm}&searchType=image&start=${offset}&alt=json`;
       /*axios.get(url)
       .then(response => {
         let googleData = [];
