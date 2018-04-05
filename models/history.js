@@ -1,11 +1,11 @@
-onst mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const urlSchema = new Schema({
-    originalUrl: String,
-    shortenedUrl: String}, 
-    {timestamps:true});
+const historySchema = new Schema({
+    term: String,
+    when: String
+});
 
-const ModelClass = mongoose.model('hist', urlSchema);
+const ModelClass = mongoose.model('history', historySchema);
 
 module.exports = ModelClass;

@@ -4,10 +4,13 @@ var path = require('path');
 var mongoose = require('mongoose');
 var cors = require('cors');
 var bodyParser = require('body-parser');
+var GoogleSearch = require('google-search');
 var app = express();
-
 app.use(bodyParser.json());
 app.use(cors());
+
+//connect to MLab
+const uri = 'mongodb://'+process.env.USER+':'+process.env.PASS+'@'+process.env.HOST+':'+process.env.DB_PORT+'/'+process.env.DB;
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
@@ -28,4 +31,27 @@ var listener = app.listen(process.env.PORT, function () {
 // /api/imagesearch/
 // /api/latest
 
-//https://api.cognitive.microsoft.com/bing/v7.0/images
+/*var googleSearch = new GoogleSearch({
+  key: process.env.GOOGLE_API_KEY,
+  cx: process.env.GOOGLE_ID
+});
+ 
+ 
+googleSearch.build({
+  q: "",
+  start: 5,
+  fileType: "pdf",
+  gl: "tr", //geolocation, 
+  lr: "lang_tr",
+  num: 10, // Number of search results to return between 1 and 10, inclusive 
+  siteSearch: "http://kitaplar.ankara.edu.tr/" // Restricts results to URLs from a specified site 
+}, function(error, response) {
+  console.log(response);
+});*/
+
+/*"template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}
+&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}
+&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}
+&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}
+&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}
+&imgDominantColor={imgDominantColor?}&alt=json"*/
