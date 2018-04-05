@@ -3,6 +3,7 @@ dependencies:
   cors: 2.8.4
   cse: 1.0.4
   express: 4.16.3
+  google-search: 0.0.5
   mongoose: 5.0.13
   path: 0.12.7
 packages:
@@ -204,12 +205,19 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=
+  /google-search/0.0.5:
+    dependencies:
+      underscore: 1.3.3
+      url: 0.7.9
+    dev: false
+    resolution:
+      integrity: sha1-+duErCDsvRLYkmIAOA8paebFCIQ=
   /http-errors/1.6.2:
     dependencies:
       depd: 1.1.1
       inherits: 2.0.3
       setprototypeof: 1.0.3
-      statuses: 1.4.0
+      statuses: 1.5.0
     dev: false
     engines:
       node: '>= 0.6'
@@ -400,12 +408,25 @@ packages:
       node: '>= 0.10'
     resolution:
       integrity: sha512-jQTChiCJteusULxjBp8+jftSQE5Obdl3k4cnmLA6WXtK6XFuWRnvVL7aCiBqaLPM8c4ph0S4tKna8XvmIwEnXQ==
+  /punycode/1.0.0:
+    dev: false
+    engines:
+      '0': node
+      '1': rhino
+    resolution:
+      integrity: sha1-zp5sbpwdtYJxdPzrEv9JOHAKG9M=
   /qs/6.5.1:
     dev: false
     engines:
       node: '>=0.6'
     resolution:
       integrity: sha512-eRzhrN1WSINYCDCbrz796z37LOe3m5tmW7RQf6oBntukAG1nmovJvhnwHHRMAfeoItc1m2Hk02WER2aQ/iqs+A==
+  /querystring/0.1.0:
+    dev: false
+    engines:
+      node: '>=0.4.x'
+    resolution:
+      integrity: sha1-y3aibNoKEKlBY/zbPhMoJ/BLexA=
   /range-parser/1.2.0:
     dev: false
     engines:
@@ -457,7 +478,7 @@ packages:
       escape-html: 1.0.3
       etag: 1.8.1
       fresh: 0.5.2
-      http-errors: 1.6.2
+      http-errors: 1.6.3
       mime: 1.4.1
       ms: 2.0.0
       on-finished: 2.3.0
@@ -516,12 +537,26 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha512-HRkVv/5qY2G6I8iab9cI7v1bOIdhm94dVjQCPFElW9W+3GeDOSHmy2EBYe4VTApuzolPcmgFTN3ftVJRKR2J9Q==
+  /underscore/1.3.3:
+    dev: false
+    resolution:
+      integrity: sha1-R6xTaD2vgyv6lS4XdEF9pHgXrkI=
   /unpipe/1.0.0:
     dev: false
     engines:
       node: '>= 0.8'
     resolution:
       integrity: sha1-sr9O6FFKrmFltIF4KdIbLvSZBOw=
+  /url/0.7.9:
+    dependencies:
+      punycode: 1.0.0
+      querystring: 0.1.0
+    dev: false
+    engines:
+      ender: '>= 0.5.0'
+      node: '>= 0.2.0'
+    resolution:
+      integrity: sha1-GVmxqLNh/AF7WVE6fH+pgn9eTtA=
   /util/0.10.3:
     dependencies:
       inherits: 2.0.1
@@ -548,5 +583,6 @@ specifiers:
   cors: ^2.8.4
   cse: ^1.0.4
   express: ^4.16.3
+  google-search: ^0.0.5
   mongoose: ^5.0.13
   path: ^0.12.7

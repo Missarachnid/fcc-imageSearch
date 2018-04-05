@@ -2,12 +2,13 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
-const cors = require('cors');
+//const cors = require('cors');
 const bodyParser = require('body-parser');
 const GoogleSearch = require('google-search');
+const history = require('./models/history');
 const app = express();
 app.use(bodyParser.json());
-app.use(cors());
+//app.use(cors());
 
 //connect to MLab
 const uri = 'mongodb://'+process.env.USER+':'+process.env.PASS+'@'+process.env.HOST+':'+process.env.DB_PORT+'/'+process.env.DB;
@@ -27,7 +28,7 @@ var googleSearch = new GoogleSearch({
  
  
 googleSearch.build({
-  q: "",
+  q: "lolcats",
   safe: "medium",
   searchType: "image"
 }, (error, response) =>  {

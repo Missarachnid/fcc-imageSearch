@@ -12,7 +12,8 @@
     "mongoose": "^5.0.13",
     "cors": "^2.8.4",
     "cse": "^1.0.4",
-    "body-parser": "^1.18.2"
+    "body-parser": "^1.18.2",
+    "google-search": "^0.0.5"
   },
   "engines": {
     "node": "8.x"
