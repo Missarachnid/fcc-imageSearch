@@ -28,7 +28,8 @@ var googleSearch = new GoogleSearch({
  
  
 googleSearch.build({
-  q: "lolcats",
+  q: "corgis",
+  num: 100,
   searchType: "image"
 }, (error, response) =>  {
   if(error){
