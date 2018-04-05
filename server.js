@@ -61,16 +61,17 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
 app.get('/api/recent' , (req, res) => {
   const final = [];
   history.find({}, (err, data) => {
-    const results = data;
+    const results = Array.from(data);
+    console.log(results);
     results.map( val => {
     var entry = {
-      term: results[val].term,
-      when: results[val].when
+      term: results[val].term.value,
+      when: results[val].when.value
     };
       
-      results.push(JSON.stringify(entry));
+      final.push(JSON.stringify(entry));
     });
-    res.send(final);
+    res.json(final);
   });
 });
 
