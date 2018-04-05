@@ -61,17 +61,22 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
 app.get('/api/recent' , (req, res) => {
   const final = [];
   history.find({}, (err, data) => {
-    const results = Array.from(data);
-    console.log(results);
-    results.map( val => {
+    if(err) {
+      console.log('Error', err);
+    }else{
+  const response = Array.from(data);
+    
+    response.map( val => {
+      console.log(response[val]);
     var entry = {
-      term: results[val].term.value,
-      when: results[val].when.value
+      term: response[val].term,
+      when: response[val].when
     };
-      
+    
       final.push(JSON.stringify(entry));
     });
     res.json(final);
+    }
   });
 });
 
