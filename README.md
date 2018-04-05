@@ -1,27 +1,21 @@
-Welcome to Glitch
-=================
-
-Click `Show` in the header to see your app live. Updates to your code will instantly deploy and update live.
-
-**Glitch** is the friendly community where you'll build the app of your dreams. Glitch lets you instantly create, remix, edit, and host an app, bot or site, and you can invite collaborators or helpers to simultaneously edit code with you.
-
-Find out more [about Glitch](https://glitch.com/about).
+Free Code Camp Image Search Abstraction Layer
+=========================
 
 
-Your Project
-------------
+### Author:
+Melissa Kepler A.K.A. Missarachnid
 
-On the front-end,
-- edit `public/client.js`, `public/style.css` and `views/index.html`
-- drag in `assets`, like images or music, to add them to your project
+### Built With: 
+*  HTML
+*  CSS
+*  JavaScript/ Node.js
+*  Glitch
+*  Mongodb
+*  MLab
 
-On the back-end,
-- your app starts at `server.js`
-- add frameworks and packages in `package.json`
-- safely store app secrets in `.env` (nobody can see this but you and people you invite)
+### Acknowledgements
+*  [Free Code Camp](https://www.freecodecamp.org)
+*  [Glitch](https://glitch.com/)
+*  [MLab](https://mlab.com/)
 
-
-Made by [Fog Creek](https://fogcreek.com/)
--------------------
-
-\ ゜o゜)ノ
+## Project is still a work in progress
