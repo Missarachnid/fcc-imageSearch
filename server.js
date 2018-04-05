@@ -1,8 +1,7 @@
-// server.js
-// where your node app starts
-
 // init project
 var express = require('express');
+var path = require('path');
+var mongoose = require('mongoose');
 var app = express();
 
 // we've started you off with Express, 
