@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const GoogleSearch = require('google-search');
 const history = require('./models/history');
 const app = express();
+const axios = require('axios');
 app.use(bodyParser.json());
 //app.use(cors());
 
@@ -14,12 +15,21 @@ app.use(bodyParser.json());
 const uri = 'mongodb://'+process.env.USER+':'+process.env.PASS+'@'+process.env.HOST+':'+process.env.DB_PORT+'/'+process.env.DB;
 
 // http://expressjs.com/en/starter/static-files.html
-app.use(express.static('public'));
+//app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
-app.get('api/imagesearch/:searchTerm*', (req, res) => {
+app.get('/api/imagesearch/:searchTerm*', (req, res) => {
   const {searchTerm} = req.params;
-  console.log(searchTerm);
+  console.log('Search Term', searchTerm);
+  const url = `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.GOOGLE_ID}&q=${searchTerm}&searchType=image&alt=json`;
+  axios.get(url)
+  .then(response => {
+  console.log('Response', response);
+  })
+  .catch(error => {
+    console.log('Error', error);
+  })
+  
 });
 
 /*var googleSearch = new GoogleSearch({
