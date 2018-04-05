@@ -36,10 +36,12 @@ app.use(express.static('public'));
 //Gathers parameters from search and serves results
 app.get('/api/imagesearch/:searchTerm*', (req, res) => {
   const {searchTerm} = req.params;
+   var searchTerm = searchTerm.replace(/' '/g, '%20');
+  
   const {offset} = req.query;
   //Remeber to take any spaces out with regex
   console.log('Search Term', searchTerm);
-  console.log('offset', offset);
+  //console.log('offset', offset);
   let data = new history({
     term: searchTerm,
     when: new Date()
@@ -49,7 +51,7 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
     if(err){
       res.send('Error saving search term to database');
     } else {
-      console.log(JSON.stringify(data));
+      //console.log(JSON.stringify(data));
       res.json(data);
     }
   });
@@ -64,7 +66,7 @@ app.get('/api/recent' , (req, res) => {
   //return items saved in the collection
   history.find({}, (err, data) => {
     if(err) {
-      console.log('Error', err);
+      //console.log('Error', err);
     }else{
       console.log(data);
       for(var i = 0; i < data.length; i++){
