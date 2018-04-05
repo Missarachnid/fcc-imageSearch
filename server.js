@@ -35,7 +35,7 @@ googleSearch.build({
   if(error){
     console.log("Error", error);
   } else{
-    console.log("Response", response);
+    console.log("Response", response.items.length);
   }
   
 });
