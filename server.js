@@ -39,6 +39,7 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
     when: new Date()
   });
   //Save search term into database
+ 
   data.save(err => {
     if(err){
       res.send('Error saving search term to database');
@@ -63,7 +64,7 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
       res.send(error);
       })
     }
-  });
+  });// end of save
 });
 
 
@@ -90,24 +91,7 @@ app.get('/api/recent' , (req, res) => {
 });
 
 
-
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
-
-//I can get the image URLs, alt text and page urls for a set of images relating to a given search string.
-//I can paginate through the responses by adding a ?offset=2 parameter to the URL.
-//I can get a list of the most recently submitted search strings.
-// /api/imagesearch/
-// /api/latest
-
-
-
-/*"template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}
-&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}
-&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}
-&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}
-&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}
-&imgDominantColor={imgDominantColor?}&alt=json"*/
-
