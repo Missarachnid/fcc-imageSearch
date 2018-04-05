@@ -1,11 +1,11 @@
 // init project
-var express = require('express');
-var path = require('path');
-var mongoose = require('mongoose');
-var cors = require('cors');
-var bodyParser = require('body-parser');
-var GoogleSearch = require('google-search');
-var app = express();
+const express = require('express');
+const path = require('path');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const GoogleSearch = require('google-search');
+const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 

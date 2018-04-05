@@ -1,5 +1,5 @@
 {
-  "name": "FCC Image Search Abstraction Layer",
+  "name": "FCC-Image-Search-Abstraction-Layer",
   "version": "0.0.1",
   "description": "Free Code Camp Image Search Abstraction Layer Project",
   "main": "server.js",
