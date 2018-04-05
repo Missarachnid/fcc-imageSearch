@@ -12,6 +12,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
+
 /*var data2 = {
       "term": searchTerm,
       "when": data.createdAt
@@ -37,9 +38,9 @@ app.use(express.static('public'));
 app.get('/api/imagesearch/:searchTerm*', (req, res) => {
   let {searchTerm} = req.params;
   //replace the spaces with %20 to send query to google search
-   searchTerm = searchTerm.replace(/ /g, '%20');
+   const googleTerm = searchTerm.replace(/ /g, '%20');
   const {offset} = req.query;
-  console.log('Search Term', searchTerm);
+  //console.log('Search Term', searchTerm);
   //console.log('offset', offset);
   let data = new history({
     term: searchTerm,
@@ -50,14 +51,25 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
     if(err){
       res.send('Error saving search term to database');
     } else {
-      //console.log(JSON.stringify(data));
-      res.json(data);
+      /*Google search goes here*/
+      const url = `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.GOOGLE_ID}&q=${googleTerm}&searchType=image&alt=json`;
+      /*axios.get(url)
+      .then(response => {
+        let googleData = response;
+        for
+      //console.log('Response', response);
+      
+      })
+      .catch(error => {
+      console.log('Error', error);
+      })*/
+      
+      
     }
   });
-  
-  /*Google search goes here*/
-  
 });
+
+
 
 //gathers collection entries and displays on page
 app.get('/api/recent' , (req, res) => {
