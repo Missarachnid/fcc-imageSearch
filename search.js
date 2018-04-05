@@ -1,4 +1,4 @@
-const searchData ={
+module.exports ={
  "kind": "customsearch#search",
  "url": {
   "type": "application/json",
@@ -251,4 +251,3 @@ const searchData ={
  ]
 }
 
-export google

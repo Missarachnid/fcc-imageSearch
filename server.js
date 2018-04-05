@@ -56,16 +56,20 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
       /*Google search goes here*/
       //const url = `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.GOOGLE_ID}&q=${googleTerm}&searchType=image&start=${offset}&alt=json`;
       /*axios.get(url)
-      .then(response => {
+      .then(response => {*/
         let googleData = [];
-        for(var i = 0; i < response.length; i++){
+        for(var i = 0; i < search.items.length; i++){
           let entry = {
-            url: response[i]
-          };
+            url: search.items[i].link,
+            snippet: search.items[i].snippet,
+            thumbnail: search.items[i].image.thumbnailLink,
+            context: search.items[i].title
+          }
+          
         }
-      //console.log('Response', response);
       
-      })
+      
+      /*})
       .catch(error => {
       console.log('Error', error);
       })*/
