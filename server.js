@@ -23,3 +23,5 @@ var listener = app.listen(process.env.PORT, function () {
 //I can get a list of the most recently submitted search strings.
 // /api/imagesearch/
 // /api/latest
+
+//https://api.cognitive.microsoft.com/bing/v7.0/images
