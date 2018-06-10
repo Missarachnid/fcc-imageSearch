@@ -591,7 +591,7 @@ packages:
     resolution:
       integrity: sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 registry: 'https://registry.npmjs.org/'
-shrinkwrapMinorVersion: 5
+shrinkwrapMinorVersion: 7
 shrinkwrapVersion: 3
 specifiers:
   axios: ^0.18.0
