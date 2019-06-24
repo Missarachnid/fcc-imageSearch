@@ -26,7 +26,7 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
   let {searchTerm} = req.params;
   //replace the spaces with %20 to send query to google search
   const googleTerm = searchTerm.replace(/ /g, '%20');
-  let {offset} = req.query || 0;
+  let {offset} = req.query;
   let data = new history({
     term: searchTerm,
     when: new Date()
