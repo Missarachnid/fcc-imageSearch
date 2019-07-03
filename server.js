@@ -38,6 +38,7 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
     } else {
       /*Google search goes here*/
       const url = `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.GOOGLE_ID}&q=${googleTerm}&searchType=image&start=${offset}&alt=json`;
+      console.log(url);
       axios.get(url)
       .then(response => {
         let googleData = [];
