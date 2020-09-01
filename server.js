@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //connect to MLab
-const uri = 'mongodb://'+process.env.USER+':'+process.env.PASS+'@'+process.env.HOST+':'+process.env.DB_PORT+'/'+process.env.DB;
+const uri = 'mongodb+srv://'+process.env.USER+':'+process.env.PASS+'@'+process.env.HOST+'/'+process.env.DB;
 mongoose.connect(uri).then((err, res) => {
   if(err){
     console.log(err);
