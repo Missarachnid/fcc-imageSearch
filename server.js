@@ -13,7 +13,7 @@ app.use(cors());
 
 //connect to MLab
 const uri = 'mongodb+srv://'+process.env.USER+':'+process.env.PASS+'@'+process.env.HOST+'/'+process.env.DB;
-mongoose.connect(uri, { useNewUrlParser: true }).then((err, res) => {
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }).then((err, res) => {
   if(err){
     console.log(err);
   }
