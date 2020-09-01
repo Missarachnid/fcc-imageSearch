@@ -12,8 +12,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //connect to MLab
-cconst uri = 'mongodb+srv://'+process.env.USER+':'+process.env.PASS+'@'+process.env.HOST+'/'+process.env.DB + ', { useNewUrlParser: true }';
-mongoose.connect(uri).then((err, res) => {
+const uri = 'mongodb+srv://'+process.env.USER+':'+process.env.PASS+'@'+process.env.HOST+'/'+process.env.DB;
+mongoose.connect(uri, { useNewUrlParser: true }).then((err, res) => {
   if(err){
     console.log(err);
   }
@@ -28,6 +28,9 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
   //replace the spaces with %20 to send query to google search
   const googleTerm = searchTerm.replace(/ /g, '%20');
   let {offset} = req.query;
+  if(offset === undefined){
+    offset = 1;
+  }
   let data = new history({
     term: searchTerm,
     when: new Date()
@@ -62,7 +65,7 @@ app.get('/api/imagesearch/:searchTerm*', (req, res) => {
 });
 
 //gathers collection entries and displays on page
-app.get('/api/recent' , (req, res) => {
+app.get('/api/latest' , (req, res) => {
   const final = [];
   //return items saved in the collection
   history.find({}, (err, data) => {
