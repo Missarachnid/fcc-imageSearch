@@ -2,6 +2,7 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const mongodb = require('mongodb').MongoClient;
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const history = require('./models/history');
