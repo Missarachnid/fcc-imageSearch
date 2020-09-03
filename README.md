@@ -21,4 +21,4 @@ Melissa Kepler A.K.A. Missarachnid
 *  [Google Custom Search Engine](https://developers.google.com/custom-search/)
 
 
-## Project can be seen [here](https://corgi.glitch.me/)
+## Project can be seen [here](https://corgi.glitch.me)
