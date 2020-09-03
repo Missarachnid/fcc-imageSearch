@@ -13,7 +13,7 @@ app.use(cors());
 
 //connect to MLab
 const uri = 'mongodb+srv://'+process.env.USER+':'+process.env.PASS+'@'+process.env.HOST+'/'+process.env.DB;
-console.log('uri', uri);
+
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }).then((err, res) => {
   if(err){
     console.log(err);
@@ -85,7 +85,7 @@ app.get('/api/latest' , (req, res) => {
     }
   });
 });
-
+console.log('uri', uri);
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, () => {
