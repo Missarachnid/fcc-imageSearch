@@ -10,9 +10,10 @@ const app = express();
 const axios = require('axios');
 app.use(bodyParser.json());
 app.use(cors());
+require('dotenv').config();
 
 //connect to MLab
-
+const uri = 'mongodb+srv://'+process.env.USER+':'+process.env.PASS+'@'+process.env.HOST+'/'+process.env.DATABASE;
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }).then((err, res) => {
   if(err){
@@ -85,7 +86,7 @@ app.get('/api/latest' , (req, res) => {
     }
   });
 });
-console.log('uri', uri);
+
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, () => {
