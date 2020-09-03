@@ -17,7 +17,7 @@ const uri = 'mongodb+srv://'+process.env.USER+':'+process.env.PASS+'@'+process.e
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }).then((err, res) => {
   if(err){
-    console.log(err);
+    git (err);
   }
 });
 
